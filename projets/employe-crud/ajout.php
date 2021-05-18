@@ -1,0 +1,73 @@
+<?php
+
+/*
+Ecrire un programme PHP, qui réceptionne ces données et construit un objet à partir de ces données
+*/
+
+/*
+Ecrire une fonction qui convertir un tableau associatif en objet de type Employe
+*/
+// 1. Nom de la fonction : convertirPayloadEnEmploye
+// 2. Le type et nom des paramètres en entrée : array $data
+// 3. Le type de sortie : Employe
+
+class Employe
+{
+    public $nom;
+    public $prenom;
+    public $age;
+    public $salaire;
+    public $premium;
+}
+
+function convertirPayloadEnEmploye(array $data): Employe
+{
+    $objet = new Employe();
+    $objet->nom = $data['nom'];
+    $objet->prenom = $data['prenom'];
+    $objet->age = intval($data['age']);
+    $objet->salaire = floatval($data['salaire-base']);
+    $objet->premium = isset($data['premium-check']) == true && $data['premium-check'] == 'on';
+    
+    return $objet;
+}
+
+// 1. Le nom de la fonction : verifierPayload
+// 2. Le type et le nom des parametres en entrée : array $payload
+// 3. Le type de sortie : ?string
+
+function verifierPayload(array $payload): ?string
+{
+    // @Si "$payload['nom'] existe" est Faux @Ou $payload['nom'] est une chaine vide
+    if (isset($payload['nom']) == false || $payload['nom'] == '')
+    {
+        return "Yosh, il faut un nom pour l'employe !";
+    }
+
+    if (isset($payload['prenom']) == false || $payload['prenom'] == '')
+    {
+        return "Rooohhhh, il faut un prenom pour l'employe !";
+    }
+
+    if (isset($payload['age']) == false || is_numeric($payload['age']) == false)
+    {
+        return "Rooohhhh, il faut un age pour l'employe et il doit etre numerique !";
+    }
+
+    if (isset($payload['salaire-base']) == false || is_numeric($payload['salaire-base']) == false)
+    {
+        return "Wouha, stop stop stop là, il faut un salaire pour l'employe et il doit etre numerique !";
+    }
+
+    return null;
+}
+
+$messageErreur = verifierPayload($_POST);
+if ($messageErreur == null)
+{
+    var_dump(convertirPayloadEnEmploye($_POST));
+}
+else
+{
+    var_dump($messageErreur);
+}
