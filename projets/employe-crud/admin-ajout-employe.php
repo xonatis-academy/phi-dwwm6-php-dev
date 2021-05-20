@@ -1,3 +1,4 @@
 <?php
 
-include __DIR__.'/views/ajout.html.php';
+require __DIR__.'/src/controllers/ajout.php';
+afficherFormulaire();

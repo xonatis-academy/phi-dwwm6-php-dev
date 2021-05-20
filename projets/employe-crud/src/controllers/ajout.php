@@ -68,3 +68,15 @@ function creerEmploye()
     }
 }
 
+function afficherFormulaire()
+{
+    include __DIR__ . '/../../views/ajout.html.php';
+
+    /**
+     * __DIR__ = employe-crud/src/controllers
+     * __DIR__ . '/..' = employe-crud/src/controllers/.. = employe-crud/src
+     * __DIR__ . '/../..' = employe-crud/src/controllers/../.. = employe-crud
+     * __DIR__ , '/../../views' = employe-crud/src/controllers/../../views = employe-crud/views
+     * __DIR__ . '/../../views/ajout.html.php' = employe-crud/src/controllers/../../views/ajout.html.php = employe-crud/views/ajout.html.php
+     */
+}
