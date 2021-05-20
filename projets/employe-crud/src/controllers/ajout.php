@@ -60,7 +60,9 @@ function creerEmploye()
     $messageErreur = verifierPayload($_POST);
     if ($messageErreur == null)
     {
-        var_dump(convertirPayloadEnEmploye($_POST));
+        $objet = convertirPayloadEnEmploye($_POST);
+        stockerEmploye($objet);
+        echo "L'employe a été stocké, trop cool, t'es fort(e).";
     }
     else
     {
@@ -79,4 +81,15 @@ function afficherFormulaire()
      * __DIR__ , '/../../views' = employe-crud/src/controllers/../../views = employe-crud/views
      * __DIR__ . '/../../views/ajout.html.php' = employe-crud/src/controllers/../../views/ajout.html.php = employe-crud/views/ajout.html.php
      */
+}
+
+// 1. Nomd e la fonction : stockerEmploye
+// 2. Type et nom en entrée : Employe $employe
+// 3. Type en sortie : bool
+
+function stockerEmploye(Employe $employe): bool
+{
+    $chaine = json_encode($employe);
+    setcookie('cle-employe', $chaine);
+    return true;
 }
