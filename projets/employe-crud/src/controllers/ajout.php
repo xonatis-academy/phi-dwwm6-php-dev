@@ -11,14 +11,7 @@ Ecrire une fonction qui convertir un tableau associatif en objet de type Employe
 // 2. Le type et nom des paramètres en entrée : array $data
 // 3. Le type de sortie : Employe
 
-class Employe
-{
-    public $nom;
-    public $prenom;
-    public $age;
-    public $salaire;
-    public $premium;
-}
+require __DIR__ . '/../models/Employe.php';
 
 function convertirPayloadEnEmploye(array $data): Employe
 {
@@ -62,12 +55,16 @@ function verifierPayload(array $payload): ?string
     return null;
 }
 
-$messageErreur = verifierPayload($_POST);
-if ($messageErreur == null)
+function creerEmploye()
 {
-    var_dump(convertirPayloadEnEmploye($_POST));
+    $messageErreur = verifierPayload($_POST);
+    if ($messageErreur == null)
+    {
+        var_dump(convertirPayloadEnEmploye($_POST));
+    }
+    else
+    {
+        var_dump($messageErreur);
+    }
 }
-else
-{
-    var_dump($messageErreur);
-}
+

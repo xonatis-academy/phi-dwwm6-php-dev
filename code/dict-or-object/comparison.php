@@ -9,10 +9,7 @@ $tab = [
     ],
     [
         'nom' => 'Pasdetoit',
-        'prenom' => 'Johnathan',
-        'age' => 23,
-        'salaire' => 45934.9,
-        'premium' => false
+        'prenom' => 'Johnathan'
     ],
     [
         'nom' => 'Atoutprix',

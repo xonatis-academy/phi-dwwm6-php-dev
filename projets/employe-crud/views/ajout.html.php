@@ -4,7 +4,7 @@
         <title>Ajouter un employe</title>
     </head>
     <body>
-        <form action="http://localhost:8080/ajout.php" method="POST">
+        <form action="http://localhost:8080/creer-un-employe.php" method="POST">
             <input name="nom" type="text" placeholder="nom" /><br />
             <input name="prenom" type="text" placeholder="prenom" /><br />
             <input name="age" type="number" placeholder="age" /><br />
