@@ -72,6 +72,7 @@ function creerEmploye()
 
 function afficherFormulaire()
 {
+    session_start();
     include __DIR__ . '/../../views/ajout.html.php';
 
     /**
